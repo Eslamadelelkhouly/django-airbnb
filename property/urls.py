@@ -5,6 +5,5 @@ app_name = 'peroperty'
 
 urlpatterns = [
     path('',PropertyList.as_view()),
-    path('',PropertyDetails.as_view())
-    
+    # path('',PropertyDetails.as_view())
 ]
