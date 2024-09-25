@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.utils.text import slugify
 
 # Create your models here.
 class Property(models.Model):
@@ -11,6 +12,12 @@ class Property(models.Model):
     place = models.ForeignKey("Place", on_delete=models.CASCADE, verbose_name="property_place", related_name='properties')
     category = models.ForeignKey("Category", on_delete=models.CASCADE, verbose_name="property_category", related_name='properties')
     created_at = models.DateTimeField(default=timezone.now)
+    slug = models.SlugField(null=True , blank=True)
+
+    def save(self,*args,**kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super(Property,self).save(*args,**kwargs)
 
     def __str__(self):
         return self.name

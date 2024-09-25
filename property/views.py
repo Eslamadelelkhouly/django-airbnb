@@ -9,6 +9,6 @@ class PropertyList(ListView):
     # filter
 
 
-class PropertyDetail(DetailView):
+class PropertyDetails(DetailView):
     pass
     ## Book
