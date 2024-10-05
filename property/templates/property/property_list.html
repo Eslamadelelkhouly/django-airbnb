@@ -157,7 +157,7 @@
 								{% if page_obj.has_previous  %}
 									<li><a href="?page={{page_obj_previous_page_number}}">&lt;</a></li>
 								{% else %}
-									<li class="disapled"></li>
+									<li class="disapled"><span>&lt;</span></li>
 								{% endif %}
 								
 								{% for i in paginator.page_range %}
@@ -173,7 +173,7 @@
 								{% if page_obj.has_next %}
 									<li><a href="?page={{page_obj_next_page_number}}">&gt;</a></li>
 								{% else %}
-								<li class="disapled"></li>
+								<li class="disapled"><span>&gt;</span></li>
 								{% endif %}
 
 								
