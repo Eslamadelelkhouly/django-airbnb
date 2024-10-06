@@ -5,6 +5,7 @@ from django.views.generic.edit import FormMixin
 
 from django.views.generic import ListView , DetailView
 from .models import Property
+from .forms import PropertyBookForm
 
 class PropertyList(ListView):
     model = Property
@@ -14,6 +15,7 @@ class PropertyList(ListView):
 
 class PropertyDetails(FormMixin,DetailView):
     model = Property
+    form_class = PropertyBookForm
     ## Book
 
     def get_context_data(self, **kwargs) :
@@ -22,5 +24,4 @@ class PropertyDetails(FormMixin,DetailView):
         return context
 
     def post(self,request,*args, **kwargs):
-        
-
+        pass
