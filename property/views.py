@@ -6,6 +6,7 @@ from django.views.generic.edit import FormMixin
 from django.views.generic import ListView , DetailView
 from .models import Property
 from .forms import PropertyBookForm
+from .filters import PropertyFilter
 
 class PropertyList(ListView):
     model = Property

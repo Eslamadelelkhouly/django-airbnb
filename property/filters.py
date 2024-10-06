@@ -1,6 +1,7 @@
 import django_filters
+from .models import Property
 
-class ProductFilter(django_filters.FilterSet):
+class PropertyFilter(django_filters.FilterSet):
     class Meta:
-        model = Product
-        fields = ['name', 'price', 'manufacturer']
+        model = Property
+        fields = ['name', 'description','place', 'category']
