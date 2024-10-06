@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import FormMixin
 
 # Create your views here.
 
@@ -11,7 +12,7 @@ class PropertyList(ListView):
     # filter
 
 
-class PropertyDetails(DetailView):
+class PropertyDetails(FormMixin,DetailView):
     model = Property
     ## Book
 
@@ -19,3 +20,7 @@ class PropertyDetails(DetailView):
         context = super().get_context_data(**kwargs)
         context["related"] = Property.objects.filter(category=self.get_object().category)[:2]
         return context
+
+    def post(self,request,*args, **kwargs):
+        
+
