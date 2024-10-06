@@ -14,3 +14,8 @@ class PropertyList(ListView):
 class PropertyDetails(DetailView):
     model = Property
     ## Book
+
+    def get_context_data(self, **kwargs) :
+        context = super().get_context_data(**kwargs)
+        context["related"] = Property.objects.filter(category=self.get_object().category)[:2]
+        return context
