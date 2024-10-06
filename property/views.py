@@ -7,11 +7,15 @@ from django.views.generic import ListView , DetailView
 from .models import Property
 from .forms import PropertyBookForm
 from .filters import PropertyFilter
+from django_filters.views import FilterView
 
-class PropertyList(ListView):
+
+class PropertyList(FilterView):  # filter view extend from list view
     model = Property
     paginate_by = 1
     # filter
+    filterset_class = PropertyFilter
+    template_name = 'property/property_list.html'
 
 
 class PropertyDetails(FormMixin,DetailView):
