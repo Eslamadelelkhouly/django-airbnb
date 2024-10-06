@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from django.views.generic.edit import FormMixin
 
 # Create your views here.
@@ -24,4 +24,11 @@ class PropertyDetails(FormMixin,DetailView):
         return context
 
     def post(self,request,*args, **kwargs):
-        pass
+        form = self.get_form()
+        if form.is_valid():
+            myform = form.save(commit=False)
+            myform.property = self.get_object()
+            myform.user = request.user
+            myform.save()
+            
+            return redirect('/')

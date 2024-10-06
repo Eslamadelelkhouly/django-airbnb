@@ -61,10 +61,10 @@ class PropertyReview(models.Model):  # Fixed typo here
         return str(self.property)  # Fixed typo here
 
 COUNT = (
-    (1,1),
-    (2,1),
-    (3,1),
-    (4,1),
+    (1 , 1),
+    (2 , 2),
+    (3 , 3),
+    (4 , 4),
 )
 
 class PropertyBook(models.Model):  # Fixed typo here
@@ -72,8 +72,8 @@ class PropertyBook(models.Model):  # Fixed typo here
     property = models.ForeignKey(Property, verbose_name="book_property", on_delete=models.CASCADE)  # Fixed typo here
     date_from = models.DateField(default = timezone.now)
     date_to = models.DateField(default = timezone.now)
-    guest = models.CharField(max_length= 2 , choices=COUNT)
-    children = models.CharField(max_length= 2 , choices=COUNT)
+    guest = models.IntegerField(max_length= 2 , choices=COUNT)
+    children = models.IntegerField(max_length= 2 , choices=COUNT)
 
     def __str__(self):
         return str(self.property)
