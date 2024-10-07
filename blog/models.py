@@ -18,9 +18,9 @@ class Post(models.Model):
     def save(self,*args,**kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
-        super(Property,self).save(*args,**kwargs)
+        super(Post,self).save(*args,**kwargs)
     def __str__(self):
-            return self.name
+            return self.title
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
