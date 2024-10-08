@@ -72,7 +72,7 @@ class PropertyBook(models.Model):  # Fixed typo here
     property = models.ForeignKey(Property, verbose_name="book_property", on_delete=models.CASCADE)  # Fixed typo here
     date_from = models.DateField(default = timezone.now)
     date_to = models.DateField(default = timezone.now)
-    guest = models.IntegerField(max_length= 2 , choices=COUNT)
+    guest = models.IntegerField(choices=COUNT)
     children = models.IntegerField(max_length= 2 , choices=COUNT)
 
     def __str__(self):

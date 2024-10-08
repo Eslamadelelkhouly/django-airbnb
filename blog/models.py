@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
 from django.utils.text import slugify
+from django.urls import reverse
 
 # Create your models here.
 class Post(models.Model):
@@ -19,8 +20,14 @@ class Post(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super(Post,self).save(*args,**kwargs)
+    
     def __str__(self):
             return self.title
+
+
+    def get_absolute_url(self):
+        return reverse("blog:post_detail", kwargs={"slug": self.slug})
+    
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
