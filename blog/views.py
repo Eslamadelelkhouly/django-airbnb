@@ -29,11 +29,20 @@ class PostByCategory(ListView):
         object_list = Post.objects.filter(
             Q(category__name__icontains = slug)
         )
+
+        return object_list
     
 
 
 
 class PostByTags(ListView):
     model = Post
+    def get_queryset(self):
+        slug = self.kwargs['slug']
+        object_list = Post.objects.filter(
+            Q(tags__name__icontains = slug)
+        )
+
+        return object_list
 
 
