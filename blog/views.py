@@ -3,6 +3,7 @@ from django.views.generic import ListView , DetailView
 from .models import Post , Category
 from taggit.models import Tag
 from django.db.models import Count
+from django.db.models.query_utils import Q
 # Create your views here.
 
 class PostList(ListView):
@@ -20,5 +21,18 @@ class PostDetail(DetailView):
         return context
     
 
+class PostByCategory(ListView):
+    model = Post
+
+    def get_queryset(self):
+        object_list = Post.objects.filter(
+            Q(category__name__icontains = self.kwargs['slug'])
+        )
+    
+
+
+
+class PostByTags(ListView):
+    model = Post
 
 
