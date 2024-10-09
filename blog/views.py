@@ -25,8 +25,9 @@ class PostByCategory(ListView):
     model = Post
 
     def get_queryset(self):
+        slug = self.kwargs['slug']
         object_list = Post.objects.filter(
-            Q(category__name__icontains = self.kwargs['slug'])
+            Q(category__name__icontains = slug)
         )
     
 
