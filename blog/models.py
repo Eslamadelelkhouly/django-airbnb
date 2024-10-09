@@ -13,7 +13,7 @@ class Post(models.Model):
     image = models.ImageField(upload_to='post/')
     created_At = models.DateTimeField(default=timezone.now)
     description = models.TextField(max_length=15000)
-    category = models.ForeignKey('Category', verbose_name="post_category", on_delete=models.CASCADE)
+    category = models.ForeignKey('Category', verbose_name="post_category", on_delete=models.CASCADE, related_name="post_category")
     slug = models.SlugField(null=True , blank=True)
 
     def save(self,*args,**kwargs):
