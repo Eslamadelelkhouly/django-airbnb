@@ -5,7 +5,7 @@ from .models import Post , Category
 
 class PostList(ListView):
     model = Post
-
+    paginate_by = 2
 
 class PostDetail(DetailView):
     model = Post
