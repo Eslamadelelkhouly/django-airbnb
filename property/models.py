@@ -10,7 +10,7 @@ class Property(models.Model):
     image = models.ImageField(upload_to='property/')
     price = models.IntegerField(default=0)
     description = models.TextField(max_length=10000)
-    place = models.ForeignKey("Place", on_delete=models.CASCADE, verbose_name="property_place", related_name='properties')
+    place = models.ForeignKey("Place", on_delete=models.CASCADE, verbose_name="property_place", related_name='property_place')
     category = models.ForeignKey("Category", on_delete=models.CASCADE, verbose_name="property_category", related_name='properties')
     created_at = models.DateTimeField(default=timezone.now)
     slug = models.SlugField(null=True , blank=True)
