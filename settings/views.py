@@ -48,6 +48,7 @@ def home_search(request):
     'property_list':property_list,
     }, 
     )
+
 def category_filter(request,category):
     category = Category.objects.get(name=category)
     property_list = Property.objects.filter(
@@ -59,3 +60,7 @@ def category_filter(request,category):
     'property_list':property_list,
     }, 
     )
+
+
+def contact_us(request):
+    pass
