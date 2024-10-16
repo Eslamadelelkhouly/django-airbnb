@@ -1,12 +1,17 @@
 from django.shortcuts import render
-from property .models import Property , Place
+from property .models import Property , Place , Category
 from django.db.models.query_utils import Q
 # Create your views here.
 
 
 def home(request):
     places = Place.objects.all()
-    return render(request , 'settings/home.html',{'places':places},)
+    category = Category.objects.all()
+    return render(request , 'settings/home.html',
+    {
+        'places':places , 
+        'category' : category
+    })
 
 
 def home_search(request):
@@ -16,4 +21,8 @@ def home_search(request):
         Q(name__icontains = name)&
         Q(place__name__icontains = place)
     )
-    return render(request ,'settings/home_search.html',{'property_list':property_list})
+    return render(request ,'settings/home_search.html',
+    {
+    'property_list':property_list,
+    }, 
+    )
