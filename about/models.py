@@ -13,6 +13,7 @@ class About(models.Model):
 
 class FAQ(models.Model):
     title = models.CharField(max_length=150)
+    description = models.TextField(max_length=1000)
     
     def __str__(self):
         return str(self.title)
