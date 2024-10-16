@@ -33,8 +33,11 @@
                     <p>Or browse the highlights</p>
                     <p class="browse d-md-flex">
                         {% for category in category  %}
-                        <span class="d-flex justify-content-md-center align-items-md-center"><a href="#"><i
-                                    class="{{category.icon}}"></i>{{category}}</a></span>
+                        <span class="d-flex justify-content-md-center align-items-md-center">
+                            <a href="{% url 'home:category_filter' category %}"><i
+                                    class="{{category.icon}}"></i>{{category}}
+                            </a>
+                        </span>
                         {% endfor %}
                     </p>
                 </div>

@@ -26,3 +26,14 @@ def home_search(request):
     'property_list':property_list,
     }, 
     )
+def category_filter(request,category):
+    category = Category.objects.get(name=category)
+    property_list = Property.objects.filter(
+        category=category
+    )
+
+    return render(request ,'settings/home_search.html',
+    {
+    'property_list':property_list,
+    }, 
+    )
