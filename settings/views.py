@@ -3,6 +3,7 @@ from property .models import Property , Place , Category
 from django.db.models.query_utils import Q
 from django.db.models import Count
 from blog.models import Post
+from django.contrib.auth.models import User
 # Create your views here.
 
 
@@ -14,6 +15,11 @@ def home(request):
     hotels_list = Property.objects.filter(category__name = 'Hotels')[:4]
     places_list = Property.objects.filter(category__name = 'Places')[:4]
     recent_post = Post.objects.all()[:4]
+    
+    users_count = User.objects.all().count()
+    places_count = Property.objects.filter(category__name = 'Places').count()
+    resturant_count = Property.objects.filter(category__name = 'Restaurant').count()
+    hotels_count = Property.objects.filter(category__name = 'Hotels').count()
 
     return render(request , 'settings/home.html',
     {
@@ -22,7 +28,11 @@ def home(request):
         'resturant_list' : resturant_list,
         'hotels_list' : hotels_list,
         'places_list': places_list,
-        'recent_post': recent_post
+        'recent_post': recent_post,
+        'users_count': users_count,
+        'resturant_count' : resturant_count,
+        'hotels_count' : hotels_count,
+        'places_count' : places_count
     })
 
 
