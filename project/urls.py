@@ -26,6 +26,8 @@ urlpatterns = [
     path('about/',include('about.urls',namespace='about')),
     path('',include('settings.urls',namespace='home')),
     path('summernote/', include('django_summernote.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/' , include('accounts.urls', namespace='accounts')),
 
 ]
 
