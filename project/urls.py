@@ -15,21 +15,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path , include
+from django.urls import path , include , re_path
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),  
-    path('property/',include('property.urls',namespace='property')),
-    path('blog/',include('blog.urls',namespace='blog')),
-    path('about/',include('about.urls',namespace='about')),
-    path('',include('settings.urls',namespace='home')),
+    path('admin/', admin.site.urls),
+    path('property/', include('property.urls', namespace='property')),
+    path('blog/', include('blog.urls', namespace='blog')),
+    path('about/', include('about.urls', namespace='about')),
+    path('', include('settings.urls', namespace='home')),
     path('summernote/', include('django_summernote.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/' , include('accounts.urls', namespace='accounts')),
-    path('api-auth/', include('rest_framework.urls')),
-
+    path('accounts/', include('accounts.urls', namespace='accounts')),
+    path('dj-rest-auth/', include('dj_rest_auth.urls')),
+    path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),  # Update this line
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

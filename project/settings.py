@@ -30,7 +30,6 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,7 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    ### my apps
+    'django.contrib.sites',
+    'dj_rest_auth',  # Replace rest_auth with dj_rest_auth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'accounts',
     'about',
     'blog',
@@ -49,18 +52,25 @@ INSTALLED_APPS = [
     'bootstrap4',
     'django_filters',
     'rest_framework',
+    'rest_framework.authtoken',
 ]
 
+
+SITE_ID = 1
+
 MIDDLEWARE = [
+    # Django's default middlewares
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Required middleware
+    'allauth.account.middleware.AccountMiddleware',
+    # Any other custom middleware
 ]
+
 
 ROOT_URLCONF = 'project.urls'
 
@@ -93,7 +103,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
