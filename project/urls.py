@@ -24,6 +24,7 @@ urlpatterns = [
     path('property/', include('property.urls', namespace='property')),
     path('blog/', include('blog.urls', namespace='blog')),
     path('about/', include('about.urls', namespace='about')),
+    path("i18n/", include("django.conf.urls.i18n")),
     path('', include('settings.urls', namespace='home')),
     path('summernote/', include('django_summernote.urls')),
     path('accounts/', include('django.contrib.auth.urls')),

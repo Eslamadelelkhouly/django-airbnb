@@ -64,3 +64,17 @@ def category_filter(request,category):
 
 def contact_us(request):
     pass
+
+
+
+def dashboard(request):
+    users_count = User.objects.all().count()
+    places_count = Property.objects.filter(category__name = 'Places').count()
+    resturant_count = Property.objects.filter(category__name = 'Restaurant').count()
+    hotels_count = Property.objects.filter(category__name = 'Hotels').count()
+    return render(request , 'settings/dashboard.html' , {
+        'users_count': users_count,
+        'resturant_count' : resturant_count,
+        'hotels_count' : hotels_count,
+        'places_count' : places_count
+    })
