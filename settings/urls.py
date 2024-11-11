@@ -8,5 +8,6 @@ urlpatterns = [
     path('search', views.home_search , name='home_search'),
     path('contact-us', views.contact_us , name='contact_us'),
     path('dashboard/', views.dashboard, name='dashboard'),
+    path('newsletter/', views.news_letter_subscribe, name='newsletter'),
     path('category/<slug:category>', views.category_filter , name='category_filter'),
 ]

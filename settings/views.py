@@ -1,9 +1,11 @@
 from django.shortcuts import render
+from .models import NewsLetter
 from property .models import Property , Place , Category
 from django.db.models.query_utils import Q
 from django.db.models import Count
 from blog.models import Post
 from django.contrib.auth.models import User
+from django.http import JsonResponse
 # Create your views here.
 
 
@@ -78,3 +80,9 @@ def dashboard(request):
         'hotels_count' : hotels_count,
         'places_count' : places_count
     })
+
+
+def news_letter_subscribe(request):
+    email = request.POST.get('emailInput')
+    NewsLetter.objects.create(email=email)
+    return JsonResponse({'done':'done'})
